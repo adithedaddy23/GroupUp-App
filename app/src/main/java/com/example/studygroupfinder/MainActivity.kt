@@ -306,11 +306,11 @@ fun BottomNavigationBar(
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
     val haptic = LocalHapticFeedback.current
-    val bottomNavItems = getBottomNavItems() // Get items from composable function
+    val bottomNavItems = getBottomNavItems() //
 
     if (currentRoute in listOf("home", "myEvents", "profile", "chat")) {
         NavigationBar(modifier = modifier) {
-            bottomNavItems.forEach { navItem -> // Use the composable function result
+            bottomNavItems.forEach { navItem ->
                 val selected = currentRoute == navItem.route
 
                 val iconScale by animateFloatAsState(
@@ -334,7 +334,7 @@ fun BottomNavigationBar(
                 NavigationBarItem(
                     selected = selected,
                     onClick = {
-                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                        haptic.performHapticFeedback(HapticFeedbackType.Confirm)
 
                         navController.navigate(navItem.route) {
                             popUpTo(navController.graph.findStartDestination().id) {
@@ -345,7 +345,6 @@ fun BottomNavigationBar(
                         }
                     },
                     icon = {
-                        // Use the BottomNavIcon composable with animations
                         Box(
                             modifier = Modifier
                                 .scale(iconScale)
@@ -358,7 +357,7 @@ fun BottomNavigationBar(
                         }
                     },
                     label = { Text(text = navItem.label) },
-                    alwaysShowLabel = false
+                    alwaysShowLabel = true
                 )
             }
         }
