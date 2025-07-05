@@ -47,14 +47,15 @@ fun getBottomNavItems(): List<BottomNavItem>{
             route = "myEvents"
         ),
         BottomNavItem(
-            label = "Profile",
-            icon = IconType.Vector(Icons.Default.Person),
-            route = "profile"
-        ),
-        BottomNavItem(
             label = "Chats",
             icon = IconType.Resource(painterResource(R.drawable.chat_)),
             route = "chat"
+        ),
+        BottomNavItem(
+            label = "Profile",
+            icon = IconType.Vector(Icons.Default.Person),
+            route = "profile"
         )
+
     )
 }
