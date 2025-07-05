@@ -112,19 +112,15 @@ fun ParticipantsScreen(
                         participantToRemove?.let { participant ->
                             scope.launch {
                                 try {
-                                    // 1. Optimistically update UI
                                     val tempParticipants = participants.toMutableList()
                                     tempParticipants.remove(participant)
                                     participants = tempParticipants
 
-                                    // 2. Perform actual removal
                                     repository.removeParticipant(
                                         eventId = eventId,
                                         userId = participant.userId,
                                         hostId = hostId
                                     )
-
-                                    // 3. Refresh to ensure consistency
                                     loadParticipants()
                                     Toast.makeText(
                                         context,
@@ -132,7 +128,6 @@ fun ParticipantsScreen(
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 } catch (e: Exception) {
-                                    // Show more detailed error message
                                     Log.d("Participant", e.message.toString())
                                 } finally {
                                     loadParticipants()
@@ -164,7 +159,6 @@ fun ParticipantsScreen(
                     }
                 },
                 actions = {
-                    // Add a chat button in the top bar to go to event chat
                     IconButton(
                         onClick = {
                             // Navigate to event chat room
@@ -233,7 +227,6 @@ fun ParticipantsScreen(
                                     showRemoveDialog = true
                                 },
                                 onChat = {
-                                    // Navigate to event chat room instead of individual chat
                                     navController?.navigate("chat/$eventId")
                                 }
                             )
@@ -255,7 +248,7 @@ fun ParticipantItem(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 2.dp), // Subtle spacing between items
+            .padding(horizontal = 2.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
@@ -268,13 +261,12 @@ fun ParticipantItem(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            // Left side - Profile and info
+
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
-                modifier = Modifier.weight(1f) // Take available space
+                modifier = Modifier.weight(1f)
             ) {
-                // Enhanced profile picture with online indicator
                 Box {
                     if (participant.profilePic != null) {
                         AsyncImage(
@@ -338,25 +330,6 @@ fun ParticipantItem(
                 horizontalArrangement = Arrangement.spacedBy(4.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Chat button with improved design - now goes to event chat
-                Surface(
-                    onClick = onChat,
-                    shape = CircleShape,
-                    color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.7f),
-                    modifier = Modifier.size(44.dp)
-                ) {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier.fillMaxSize()
-                    ) {
-                        Icon(
-                            painter = painterResource(R.drawable.chat_),
-                            contentDescription = "Go to event chat",
-                            tint = MaterialTheme.colorScheme.onPrimaryContainer,
-                            modifier = Modifier.size(20.dp)
-                        )
-                    }
-                }
 
                 // Remove button - only visible for host
                 if (isHost) {
