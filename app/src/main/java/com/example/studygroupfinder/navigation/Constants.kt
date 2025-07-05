@@ -43,7 +43,7 @@ fun getBottomNavItems(): List<BottomNavItem>{
         ),
         BottomNavItem(
             label = "My Events",
-            icon = IconType.Resource(painterResource(R.drawable.list)),
+            icon = IconType.Resource(painterResource(R.drawable.calendar)),
             route = "myEvents"
         ),
         BottomNavItem(

@@ -105,6 +105,8 @@ import org.osmdroid.util.GeoPoint as OsmGeoPoint
 import org.osmdroid.views.MapView
 import java.util.*
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -121,6 +123,7 @@ fun NewEventScreen(
     var maxParticipants by remember { mutableStateOf("") }
     var selectedTags by remember { mutableStateOf(setOf<String>()) }
     var locationName by remember { mutableStateOf("") }
+    val haptic = LocalHapticFeedback.current
 
     // Location state
     var selectedLocation by remember { mutableStateOf<GeoPoint?>(null) }
@@ -372,7 +375,10 @@ fun NewEventScreen(
 
                 // Create Event Button
                 Button(
-                    onClick = { createEvent() },
+                    onClick = {
+                        haptic.performHapticFeedback(HapticFeedbackType.Confirm)
+                        createEvent()
+                              },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 16.dp),
