@@ -35,6 +35,8 @@ GroupUp is a modern Android application that helps students and learners discove
 </p>
 
 
+---
+
 ## 🛠️ Tech Stack
 
 - **Language:** Kotlin  
@@ -45,3 +47,23 @@ GroupUp is a modern Android application that helps students and learners discove
 - **Other Tools:** OpenStreetMap API, Firebase Cloud Messaging
 
 ---
+
+## 📄 License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).  
+You are free to use, modify, and distribute this software with proper attribution.
+
+---
+
+## 🙌 Acknowledgements
+
+- [Firebase Authentication](https://firebase.google.com/docs/auth) – for secure user sign-in and Google login integration  
+- [Firebase Firestore](https://firebase.google.com/docs/firestore) – for storing and syncing event and chat data in real-time  
+- [Jetpack Compose](https://developer.android.com/jetpack/compose) – for building a modern and reactive UI  
+- [OpenStreetMap](https://www.openstreetmap.org/) – for enabling map-based location selection of events  
+- [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) 
+
+---
+
+Feel free to contribute or suggest features by opening an issue or pull request!
+
