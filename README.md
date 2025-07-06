@@ -26,6 +26,15 @@ GroupUp is a modern Android application that helps students and learners discove
 
 ---
 
+## 📸 Screenshots
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8b728466-5c5d-450f-9d0b-a17bcd7f0309" alt="Screenshot 1" width="250"/>
+  <img src="https://github.com/user-attachments/assets/7f852a61-4102-42ba-994d-2d2d78098b1f" alt="Screenshot 2" width="250"/>
+  <img src="https://github.com/user-attachments/assets/5a800266-f50f-405c-bf7b-cf302aaad58f" alt="Screenshot 3" width="250"/>
+</p>
+
+
 ## 🛠️ Tech Stack
 
 - **Language:** Kotlin  
